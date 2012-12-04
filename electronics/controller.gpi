@@ -1,0 +1,52 @@
+Photoplotter Info File: /boron/usr/home/tlb-devel/scooter/electronics/controller.gpi
+
+ Date              :  4/23/2008 20:53:04 
+ Plotfile          : /boron/usr/home/tlb-devel/scooter/electronics/controller.soldermask_bot
+ Apertures         : generated: 
+ Device            : Gerber photoplotter with RS-274-X aperture generation
+
+Parameter settings:
+
+ Emulate Apertures : no
+ Emulate Thermal   : no
+ Emulate Annulus   : no
+ Tolerance Draw  + :  0.00 %
+ Tolerance Draw  - :  0.00 %
+ Tolerance Flash + :  0.00 %
+ Tolerance Flash - :  0.00 %
+ Rotate            : no
+ Mirror            : no
+ Optimize          : yes
+ Auto fit          : yes
+ OffsetX           : 0inch
+ OffsetY           : 0inch
+
+Plotfile Info:
+
+ Coordinate Format : 2.4
+ Coordinate Units  : Inch
+ Data Mode         : Absolute
+ Zero Suppression  : None
+ End Of Block      : *
+
+Apertures used:
+
+ Code     Shape     Size                  used
+
+ D10      oval      0.0965inch x 0.1850inch    50
+ D11      oval      0.1085inch x 0.2090inch    32
+ D12      round     0.1080inch              23
+ D13      octagon   0.1080inch              23
+ D14      octagon   0.0680inch              38
+ D15      round     0.0830inch              15
+ D16      round     0.1480inch               6
+ D17      oval      0.1580inch x 0.0830inch    10
+ D18      round     0.0740inch              10
+ D19      oval      0.1200inch x 0.0640inch     2
+ D20      oval      0.2090inch x 0.1085inch     2
+ D21      rectangle 0.1419inch x 0.0828inch    44
+ D22      rectangle 0.0828inch x 0.1419inch     2
+ D23      oval      0.1280inch x 0.0680inch    12
+ D24      round     0.0480inch             101
+ D25      round     0.0560inch             155
+

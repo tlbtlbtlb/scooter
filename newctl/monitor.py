@@ -1,0 +1,411 @@
+#!/usr/local/bin/python
+#
+# Copyright (c) 2002, Trevor Blackwell. All rights reserved.
+# The author can be reached at tlb@tlb.org.
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions: 
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# The software is provided "as is", without warranty of any kind,
+# express or implied, including but not limited to the warranties of
+# merchantability, fitness for a particular purpose and noninfringement.
+# In no event shall the authors or copyright holders be liable for any
+# claim, damages or other liability, whether in an action of contract,
+# tort or otherwise, arising from, out of or in connection with the
+# software or the use or other dealings in the software.
+
+from __future__ import division
+import sys, os, re, string, time, math, signal, traceback, optparse
+import tty, termios, fcntl, select, struct, copy
+import builtlib
+import gtktlb
+from boost_packet import *
+from math import *
+from types import *
+from utils import *
+from gtktlb import *
+from cairotlb import *
+from cPickle import *
+from serial import *
+
+#gdbme()
+
+verbose=0
+impotent=0
+
+#debugentity.incr_verbose('/dev/scooterlog')
+#debugentity.incr_verbose('/dev/scooterlog.pkt')
+#debugentity.incr_verbose('/dev/scooterlog.pkt')
+
+protolog=file('balctl.log1', 'a')
+print>>protolog, "Startup %d" % os.getpid()
+
+class bal_c_response:
+    def __init__(self, state):
+        self.timestamp=time.time()
+        self.state=state
+
+class bal_r_response:
+    def __init__(self, conf):
+        self.timestamp=time.time()
+        self.conf=conf
+
+class bal_w_response:
+    def __init__(self, ok):
+        self.timestamp=time.time()
+        self.ok=ok
+
+class bal_d_response:
+    def __init__(self, ok):
+        self.timestamp=time.time()
+        self.ok=ok
+
+
+class update_packet(object):
+    def __init__(self, p):
+        self.mode = p.get_uint8_t()
+        self.realtime = p.get_8dot24()
+        self.vp_vel = p.get_4dot12()
+        self.speed_est = p.get_4dot12()
+        
+        self.pitch = p.get_4dot12()
+        self.roll = p.get_4dot12()
+        
+        self.pitch_rate = p.get_4dot12()
+        self.roll_rate = p.get_4dot12()
+        self.yaw_rate = p.get_4dot12()
+        
+        self.pitch_gyro = p.get_4dot12()
+        self.roll_gyro = p.get_4dot12()
+        self.yaw_gyro = p.get_4dot12()
+        
+        self.pitch_temp = p.get_4dot12()
+        self.roll_temp = p.get_4dot12()
+        self.yaw_temp = p.get_4dot12()
+        
+        self.pitch_gyro_temp_corr = p.get_4dot12()
+        self.roll_gyro_temp_corr = p.get_4dot12()
+        self.yaw_gyro_temp_corr = p.get_4dot12()
+
+        self.steering_sensor = p.get_4dot12()
+        
+        self.fwd_cmd = p.get_4dot12()
+        self.yaw_cmd = p.get_4dot12()
+        
+        self.vel_err = p.get_4dot12()
+        self.yaw_rate_err = p.get_4dot12()
+        self.pitch_err = p.get_4dot12()
+        self.pitch_err_i = p.get_4dot12()
+        self.pitch_rate_err = p.get_4dot12()
+        
+        self.x_accel = p.get_4dot12()
+        self.y_accel = p.get_4dot12()
+        self.z_accel = p.get_4dot12()
+        
+        self.target_pitch = p.get_4dot12()
+        self.target_pitch_rate = p.get_4dot12()
+        self.target_yaw_rate = p.get_4dot12()
+        
+        self.batis = p.get_4dot12()
+        self.lmis = p.get_4dot12()
+        self.rmis = p.get_4dot12()
+        self.bat_voltage = p.get_4dot12()
+        
+        self.neutral_pitch = p.get_4dot12()
+        self.neutral_pitch_rate = p.get_4dot12()
+        self.softstart = p.get_4dot12()
+
+
+    def __str__(self):
+        return "mode=%d realtime=%0.3f pitch=%+0.3f%+0.3f(%+0.3f) y=%+0.3f  roll=%+0.3f%+0.3f(%+0.3f) x=%+0.3f  err=%+0.3f cmd=%+0.3f is=%+0.3f %+0.3f steering=%+0.3f" % (
+            self.mode, self.realtime,
+            self.pitch, self.pitch_rate, self.pitch_gyro, self.y_accel,
+            self.roll, self.roll_rate, self.roll_gyro, self.x_accel,
+            self.pitch_err, self.fwd_cmd, self.lmis, self.rmis, 
+            self.steering_sensor)
+        
+    plot_columns = [
+        'realtime',
+        'mode',
+        'vp_vel',
+        'speed_est',
+        'pitch',
+        'pitch_rate',
+        'roll',
+        'roll_rate',
+        'yaw_rate',
+        'pitch_gyro',
+        'roll_gyro',
+        'yaw_gyro',
+        'pitch_temp',
+        'roll_temp',
+        'yaw_temp',
+        'pitch_gyro_temp_corr',
+        'roll_gyro_temp_corr',
+        'yaw_gyro_temp_corr',
+        'steering_sensor',
+        'fwd_cmd',
+        'yaw_cmd',
+        'vel_err',
+        'yaw_rate_err',
+        'pitch_err',
+        'pitch_err_i',
+        'pitch_rate_err',
+        'x_accel', 'y_accel', 'z_accel',
+        'target_pitch',
+        'target_pitch_rate', 'target_yaw_rate',
+        'batis', 'lmis', 'rmis',
+        'neutral_pitch',
+        'neutral_pitch_rate',
+        'bat_voltage',
+        'softstart',
+        ]
+
+    def wr_column(self, fp):
+        print>>fp, ' '.join(["%g" % getattr(self, name) for name in self.plot_columns])
+
+    def wr_commands(self, ofname, fp):
+        for i,name in indexed(self.plot_columns):
+            print>>fp, "plot \"%s\" using %d:%d title \"%s\"" % (ofname, (i==0 and [0] or [1])[0], i+1, name)
+
+
+class VisScooterRealtime(CairoDrawingArea):
+    def __init__(self, m):
+        self.m = m
+        self.m.add_dependent(self.model_changed)
+        
+    
+class BalApp(BasicApp):
+    def __init__(self, conn):
+        self.conn=conn
+        self.grfp=None
+
+        parmbox=gtk.HBox()
+
+        self.adjs={}
+        
+        def add_parm(key, name, lb, ub, incr=None, page=None):
+            
+            if incr is None: incr=(ub-lb)/100
+            if page is None: page=incr*10
+            
+            adj=gtk.Adjustment(0.0, lb, ub, incr, page, 0.0)
+            self.adjs[key]=adj
+            scale=gtk.VScale(adj)
+            scale.set_digits(2)
+            scale.set_size_request(25,170)
+            adj.connect('value_changed', self.parm_changed, key)
+
+            parmbox.add(add_gtk_frame(name, scale))
+
+        add_parm('p_gain', "P Gain", 0.0, 10.0)
+        add_parm('d_gain', "D Gain", 0.0, 1.0)
+        add_parm('i_gain', "I Gain", 0.0, 10.0)
+        add_parm('yaw_steer_gain', "Yaw Steer Gain", 0.0, 0.3)
+        add_parm('hard_speed_lim', "Hard Speed Lim", 0.0, 1.0)
+        add_parm('fwd_speed_lim', "Fwd Speed Lim", 0.01, 1.2)
+        add_parm('rev_speed_lim', "Rev Speed Lim", 0.01, 1.2)
+        if 0: add_parm('fwd_accel_bias', "Fwd Accel Bias", -0.1, 0.1)
+        add_parm('crossover_boost', "Crossover Boost", 0.0, 0.05)
+        add_parm('fwd_accel_coupling', "Fwd Accel Coupling", -2.5, 2.5)
+        add_parm('motor_torque_factor', "Motor torque factor", 0.0, 1.5)
+
+        drivebox=gtk.HBox()
+
+        def add_drive(key, name, lb, ub, incr=None, page=None):
+            
+            if incr is None: incr=(ub-lb)/100
+            if page is None: page=incr*10
+            
+            adj=gtk.Adjustment(0.0, lb, ub, incr, page, 0.0)
+            self.adjs[key]=adj
+            scale=gtk.VScale(adj)
+            scale.set_digits(2)
+            scale.set_size_request(25,170)
+            adj.connect('value_changed', self.drive_changed, key)
+
+            drivebox.add(add_gtk_frame(name, scale))
+
+        add_drive('speed_targ', "Speed", -0.25, 0.25)
+        add_drive('steering_targ', "Steering", -0.4, 0.4)
+        
+        self.read_parms=None
+        self.bal_active=0
+        self.adcdumpfiles=None
+        
+        gobject.timeout_add(30, self.periodic)
+
+        BasicApp.__init__(self, gtkvb(parmbox, drivebox))
+
+    def drive_changed(self, adj, key):
+
+        self.send_drive()
+
+    def send_drive(self):
+
+        if impotent:
+            print "Not writing drive, impotent"
+            return
+        print "Writing drive"
+
+        conf=cstruct(bal_drive)
+        for key, adj in self.adjs.items():
+            if hasattr(conf, key):
+                setattr(conf, key, adj.value)
+        
+        print>>protolog, "< D", str(conf)
+
+        self.conn.wr_pkt('D' + conf.as_str())
+
+    def parm_changed(self, adj, key):
+        if 1 or verbose: print "parm changed", key, "=", adj.value
+
+        if self.read_parms is None:
+            print "Not writing config, since parms not valid"
+            return
+
+        if impotent:
+            print "Not writing config, impotent"
+            return
+        
+        if getattr(self.read_parms, key) == adj.value:
+            #print "(Not changed)"
+            return
+
+        print "Writing config because %s changed %g to %g" % (key, getattr(self.read_parms, key), adj.value)
+
+        conf = copy.copy(self.read_parms)
+        for key, adj in self.adjs.items():
+            if hasattr(conf, key):
+                setattr(conf, key, adj.value)
+
+        print>>protolog, "< W", str(conf)
+
+        self.conn.wr_pkt('W' + conf.as_str())
+        self.conn.wr_pkt('R')
+
+    def set_parms(self, conf):
+        self.read_parms=conf
+        for key, adj in self.adjs.items():
+            if hasattr(conf, key):
+                adj.set_value(getattr(conf, key))
+
+    def set_state(self, state):
+        if self.grfp is None:
+            init_time = time.time()
+            ofname="cap%04d" % (int(init_time)%10000)
+            self.grfp=open(ofname, 'w')
+            
+            savefp=open(ofname+".gnuplot", 'w+')
+            state.wr_commands(ofname, savefp)
+            print "Output in %s" % ofname+".gnuplot"
+            savefp.close()
+
+        state.wr_column(self.grfp)
+            
+
+    def periodic(self):
+
+        print>>protolog, "Periodic ",time.time()
+
+        if self.bal_active:
+            if 0:
+                print>>protolog, "< A";
+                p = packet_wr()
+                p.add_char('A')
+                self.conn.wr_pkt(p)
+            if 1:
+                print>>protolog, "< U";
+                p = packet_wr()
+                p.add_char('U')
+                self.conn.wr_pkt(p)
+            if 0:
+                print>>protolog, "< H";
+                p = packet_wr()
+                p.add_char('H')
+                self.conn.wr_pkt(p)
+            if 0 and self.read_parms is None:
+                print>>protolog, "< R";
+                p = packet_wr()
+                p.add_char('R')
+                self.conn.wr_pkt(p)
+
+        while 1:
+            p=self.conn.rd_pkt()
+            if p is None or p.remaining()==0: break
+            self.handle_pkt(p)
+
+        return 1
+
+    def handle_pkt(self, p):
+        cmd=p.get_char()
+
+        if cmd=='r':            
+            conf=cstruct(bal_config)
+            conf.from_str(p[1:])
+            print>>protolog, '>', charname(p), "r packet", conf
+            self.set_parms(conf)
+
+        elif cmd=='u':
+            st = update_packet(p)
+            self.set_state(st)
+            print str(st)
+            print>>protolog, '>', str(st)
+
+        elif cmd=='h':
+            st=cstruct(bal_hwadj)
+            st.from_str(p[1:])
+            print>>protolog, '>', charname(p), "h packet", st
+            if 0: print st
+
+        elif cmd=='!':
+            data=p.contents()
+            print>>protolog, '>', charname(data)
+            print "!:", data
+            if re.match(r'scooter \d+\.\d+', data):
+                print "Found scooter fw",data
+                self.bal_active=1
+
+        elif cmd=='w':
+            if len(p) != 2: return
+            ok = ord(p[1])
+            print>>protolog, '>', charname(p), "w packet", ok
+
+        elif cmd=='d':
+            if len(p) != 2: return
+            ok = ord(p[1])
+            print>>protolog, '>', charname(p), "d packet", ok
+
+        elif cmd=='a':
+            if not self.adcdumpfiles:
+                self.adcdumpfiles=[file('adc%d.dump' % i, 'w') for i in range(0x40)]
+
+            nadc=p.remaining()/2
+            data=[]
+            for i in range(nadc):
+                data.append(p.get_uint16_t())
+
+            print "ADC:",data
+
+        else:
+            print>>protolog, '>', charname(cmd), "Unknown packet"
+
+def main():
+    scooterlog = tty_serial('/dev/scooterlog')
+    scooterlog.set_bitrate(115200)
+
+    conn=serial_packet_conn(scooterlog)
+
+    BalApp(conn)
+    gtk.main()
+
+if __name__ == '__main__': main()
+    

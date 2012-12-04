@@ -1,0 +1,1182 @@
+
+build.SEGWELL2/bootloader.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000067a  0001f800  0001f800  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         000010ec  00000000  00000000  000006d0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000a85  00000000  00000000  000017bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+0001f800 <__vectors>:
+   1f800:	0c 94 46 fc 	jmp	0x1f88c	; 0x1f88c <__ctors_end>
+   1f804:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f808:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f80c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f810:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f814:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f818:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f81c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f820:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f824:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f828:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f82c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f830:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f834:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f838:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f83c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f840:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f844:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f848:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f84c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f850:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f854:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f858:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f85c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f860:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f864:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f868:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f86c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f870:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f874:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f878:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f87c:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f880:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f884:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+   1f888:	0c 94 63 fc 	jmp	0x1f8c6	; 0x1f8c6 <__bad_interrupt>
+
+0001f88c <__ctors_end>:
+   1f88c:	11 24       	eor	r1, r1
+   1f88e:	1f be       	out	0x3f, r1	; 63
+   1f890:	cf ef       	ldi	r28, 0xFF	; 255
+   1f892:	d0 e1       	ldi	r29, 0x10	; 16
+   1f894:	de bf       	out	0x3e, r29	; 62
+   1f896:	cd bf       	out	0x3d, r28	; 61
+
+0001f898 <__do_copy_data>:
+   1f898:	11 e0       	ldi	r17, 0x01	; 1
+   1f89a:	a0 e0       	ldi	r26, 0x00	; 0
+   1f89c:	b1 e0       	ldi	r27, 0x01	; 1
+   1f89e:	ea e7       	ldi	r30, 0x7A	; 122
+   1f8a0:	fe ef       	ldi	r31, 0xFE	; 254
+   1f8a2:	01 e0       	ldi	r16, 0x01	; 1
+   1f8a4:	0b bf       	out	0x3b, r16	; 59
+   1f8a6:	02 c0       	rjmp	.+4      	; 0x1f8ac <__do_copy_data+0x14>
+   1f8a8:	07 90       	elpm	r0, Z+
+   1f8aa:	0d 92       	st	X+, r0
+   1f8ac:	a0 30       	cpi	r26, 0x00	; 0
+   1f8ae:	b1 07       	cpc	r27, r17
+   1f8b0:	d9 f7       	brne	.-10     	; 0x1f8a8 <__do_copy_data+0x10>
+
+0001f8b2 <__do_clear_bss>:
+   1f8b2:	11 e0       	ldi	r17, 0x01	; 1
+   1f8b4:	a0 e0       	ldi	r26, 0x00	; 0
+   1f8b6:	b1 e0       	ldi	r27, 0x01	; 1
+   1f8b8:	01 c0       	rjmp	.+2      	; 0x1f8bc <.do_clear_bss_start>
+
+0001f8ba <.do_clear_bss_loop>:
+   1f8ba:	1d 92       	st	X+, r1
+
+0001f8bc <.do_clear_bss_start>:
+   1f8bc:	a0 30       	cpi	r26, 0x00	; 0
+   1f8be:	b1 07       	cpc	r27, r17
+   1f8c0:	e1 f7       	brne	.-8      	; 0x1f8ba <.do_clear_bss_loop>
+   1f8c2:	0c 94 e8 fd 	jmp	0x1fbd0	; 0x1fbd0 <main>
+
+0001f8c6 <__bad_interrupt>:
+   1f8c6:	0c 94 00 fc 	jmp	0x1f800	; 0x1f800 <__vectors>
+
+0001f8ca <initbootuart>:
+#if   CLOCK_SPEED == 16000000
+  UBRRL = 16;
+  UCSRA |= (1<<U2X);
+#elif CLOCK_SPEED == 14745600
+  UBRRL = 7;
+   1f8ca:	87 e0       	ldi	r24, 0x07	; 7
+   1f8cc:	89 b9       	out	0x09, r24	; 9
+#elif CLOCK_SPEED == 8000000
+  UBRRL = 8;
+  UCSRA |= (1<<U2X);
+#elif CLOCK_SPEED == 3680000
+  UBRRL = 1;
+#elif CLOCK_SPEED == 2000000
+  UBRRL = 0;
+#elif CLOCK_SPEED == 7372800
+  UBRRL = 3;
+#elif CLOCK_SPEED == 1843200
+  UBRRL = 0;
+#else
+#error "Unsupported clock. Add support for it in bootloader.c"
+#endif
+
+#elif BOOT_BAUD_RATE==57600
+
+#if   CLOCK_SPEED == 16000000
+  UBRRL = 34;
+  UCSRA |= (1<<U2X);
+#elif CLOCK_SPEED == 14745600
+  UBRRL = 15;
+#elif CLOCK_SPEED == 8000000
+  UBRRL = 8;
+#else
+#error "Unsupported clock. Add support for it in bootloader.c"
+#endif
+
+#else
+#error "Unsupported baud rate"
+#endif
+
+  UCSRB = (1 << RXEN) | (1 << TXEN); // enable receive and transmit 
+   1f8ce:	88 e1       	ldi	r24, 0x18	; 24
+   1f8d0:	8a b9       	out	0x0a, r24	; 10
+   1f8d2:	08 95       	ret
+
+0001f8d4 <sendchar>:
+}
+
+
+void sendchar(char c)
+{
+  while (!(UCSRA & (1 << UDRE)));
+   1f8d4:	5d 9b       	sbis	0x0b, 5	; 11
+   1f8d6:	fe cf       	rjmp	.-4      	; 0x1f8d4 <sendchar>
+  UDR = c;
+   1f8d8:	8c b9       	out	0x0c, r24	; 12
+   1f8da:	08 95       	ret
+
+0001f8dc <recchar>:
+}
+
+char recchar(void)
+{
+  while(!(UCSRA & (1 << RXC)));
+   1f8dc:	5f 9b       	sbis	0x0b, 7	; 11
+   1f8de:	fe cf       	rjmp	.-4      	; 0x1f8dc <recchar>
+  return UDR;
+   1f8e0:	8c b1       	in	r24, 0x0c	; 12
+}
+   1f8e2:	99 27       	eor	r25, r25
+   1f8e4:	87 fd       	sbrc	r24, 7
+   1f8e6:	90 95       	com	r25
+   1f8e8:	08 95       	ret
+
+0001f8ea <recword>:
+
+uint16_t recword()
+{
+   1f8ea:	0f 93       	push	r16
+   1f8ec:	1f 93       	push	r17
+  uint8_t b1=recchar();
+   1f8ee:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1f8f2:	08 2f       	mov	r16, r24
+  uint8_t b2=recchar();
+   1f8f4:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1f8f8:	99 27       	eor	r25, r25
+   1f8fa:	98 2f       	mov	r25, r24
+   1f8fc:	88 27       	eor	r24, r24
+   1f8fe:	11 27       	eor	r17, r17
+  
+  return ((uint16_t)b2<<8) | ((uint16_t)b1);
+}
+   1f900:	80 2b       	or	r24, r16
+   1f902:	91 2b       	or	r25, r17
+   1f904:	1f 91       	pop	r17
+   1f906:	0f 91       	pop	r16
+   1f908:	08 95       	ret
+
+0001f90a <hex>:
+
+char hex(uint8_t value) 
+{
+  if (value<10) {
+   1f90a:	8a 30       	cpi	r24, 0x0A	; 10
+   1f90c:	28 f4       	brcc	.+10     	; 0x1f918 <hex+0xe>
+    return '0'+value;
+   1f90e:	80 5d       	subi	r24, 0xD0	; 208
+   1f910:	99 27       	eor	r25, r25
+   1f912:	87 fd       	sbrc	r24, 7
+   1f914:	90 95       	com	r25
+   1f916:	08 95       	ret
+  } else {
+    return 'a'+(value-10);
+   1f918:	89 5a       	subi	r24, 0xA9	; 169
+   1f91a:	99 27       	eor	r25, r25
+   1f91c:	87 fd       	sbrc	r24, 7
+   1f91e:	90 95       	com	r25
+  }
+}
+   1f920:	08 95       	ret
+
+0001f922 <BlockLoad>:
+
+int main()
+{
+  long address;
+  unsigned int temp_int;
+  unsigned char val;
+
+  cli();
+
+  /* Initialization */    
+  void (*funcptr)( void ) = 0x0000; // Set up function pointer to RESET vector.
+  initbootuart(); // Initialize UART.
+
+  /*
+    If BOOTWAIT_PORT, BOOTWAIT_DDR and BOOTWAIT_BITS are defined, set
+    the port as indicated.
+   */
+#ifdef BOOTWAIT_PORT
+  BOOTWAIT_DDR |= BOOTWAIT_BITS;
+  BOOTWAIT_PORT |= BOOTWAIT_BITS;
+#endif
+
+  {
+    // It's about 2 uS around this loop.
+    unsigned long waiting=0; // 32 bits
+    uint8_t sigphase=0;
+    uint8_t junkcount=0;
+    while (1) {
+      if ((UCSRA & (1<<RXC))) {
+        val=UDR;
+        if (++junkcount>15) {
+          while (1) {} // we're getting junk. freeze.
+        }
+        switch(sigphase) {
+        case 0:
+          if (val=='T') sigphase++;
+          break;
+        case 1:
+        case 2:
+          if (val=='o') sigphase++; else sigphase=0;
+          break;
+        case 3:
+          if (val=='b') sigphase++; else sigphase=0;
+          break;
+        case 4:
+          if (val=='!') goto foundit; else sigphase=0;
+          break;
+        }
+      }
+
+      waiting++;
+      // Don't sent this right away, because the MAX-232 won't have come up to speed yet.
+      if (waiting==8192L) {
+#if defined(MCUCSR)
+        if (1) {
+          uint8_t csr=MCUCSR;
+          sendchar('W');
+          sendchar('=');
+          sendchar(hex((csr>>4)&15));
+          sendchar(hex((csr>>0)&15));
+          sendchar(' ');
+          MCUCSR=0;
+        }
+#endif
+        sendchar('B');
+        sendchar('o');
+        sendchar('o');
+        sendchar('t');
+        sendchar('?');
+      }
+      // After half a second, give up and start the real firmware.
+      // If there is no firmware (all FFs in memory) it ends up coming back to the bootloader so we'll
+      // keep requesting boots.
+      else if (waiting==262144L) {
+        sendchar('\r');
+        sendchar('\n');
+        funcptr();
+      }
+    }
+  foundit:;
+  }
+
+#ifdef BOOTWAIT_PORT
+  BOOTWAIT_PORT &= ~BOOTWAIT_BITS;
+#endif
+
+  /* Main loop */
+  val=recchar();
+  while (1) {
+
+    // Set address.
+    if (val=='A') { // Set address...
+      // NOTE: Flash addresses are given in words, not bytes.                                            
+      address=recword();
+      sendchar('\r'); // Send OK back.
+    }
+      
+    // Chip erase.
+    else if(val=='e') {
+      for (address = 0; address < APP_END; address += PAGESIZE) {
+        // NOTE: Here we use address as a byte-address, not word-address, for convenience.
+        boot_spm_busy_wait();        
+        
+        boot_page_erase(address);
+      }
+      sendchar('\r'); // Send OK back.
+    }
+
+#ifndef REMOVE_BLOCK_SUPPORT
+    // Check block load support.
+    else if(val=='b') {
+      sendchar('Y'); // Report block load supported.
+      sendchar((BLOCKSIZE>>8) & 0xFF); // MSB first.
+      sendchar(BLOCKSIZE&0xFF); // Report BLOCKSIZE (bytes).
+    }
+      
+    // Start block load.
+    else if(val=='B') {
+      temp_int = recword(); // Get block size.
+      val = recchar(); // Get memtype.
+      sendchar( BlockLoad(temp_int,val,&address) ); // Block load.
+    }
+      
+      
+    // Start block read.
+    else if(val=='g') {
+      temp_int = recword();; // Get block size.
+      val = recchar(); // Get memtype
+      BlockRead(temp_int,val,&address); // Block read
+    }		
+#endif
+
+#ifndef REMOVE_FLASH_BYTE_SUPPORT            
+    // Read program memory.
+    else if(val=='R') {
+      // Send high byte, then low byte of flash word.
+      boot_spm_busy_wait();        
+      boot_rww_enable();
+      sendchar( __LPM( (address << 1)+1 ) );
+      sendchar( __LPM( (address << 1)+0 ) );
+
+      address++; // Auto-advance to next Flash word.
+    }
+        
+
+    // Write program memory, low byte.        
+    else if(val=='c') {
+      // NOTE: Always use this command before sending high byte.
+      temp_int=recchar(); // Get low byte for later _FILL_TEMP_WORD.
+      sendchar('\r'); // Send OK back.
+    }
+            
+            
+    // Write program memory, high byte.
+    else if(val=='C') {
+      temp_int |= ((uint16_t)recchar()<<8); // Get and insert high byte.
+      boot_spm_busy_wait();
+      boot_page_fill( (address<<1), temp_int);  // Convert word-address to byte-address and fill.
+      address++; // Auto-advance to next Flash word.
+      sendchar('\r'); // Send OK back.
+    }
+        
+        
+    // Write page.       
+    else if(val== 'm') {
+      if( address >= (APP_END>>1) ) { // Protect bootloader area.
+        sendchar('?');
+      } else {
+        boot_spm_busy_wait();        
+        boot_page_write( address << 1 ); // Convert word-address to byte-address and write.
+      }
+          
+      sendchar('\r'); // Send OK back.
+    }
+#endif
+
+#ifndef REMOVE_EEPROM_BYTE_SUPPORT
+    // Write EEPROM memory.
+    else if (val == 'D') {
+      boot_spm_busy_wait();        
+      EEARL = address; // Setup EEPROM address.
+      EEARH = (address >> 8);
+      EEDR = recchar(); // Get byte.
+      EECR |= (1<<EEMWE); // Write byte.
+      EECR |= (1<<EEWE);
+      while (EECR & (1<<EEWE)) // Wait for write operation to finish.
+        ;
+                    
+      address++; // Auto-advance to next EEPROM byte.
+      sendchar('\r');// Send OK back.
+    }
+
+            
+    // Read EEPROM memory.
+    else if (val == 'd') {
+      EEARL = address; // Setup EEPROM address.
+      EEARH = (address >> 8);
+      EECR |= (1<<EERE); // Read byte...
+      sendchar(EEDR); // ...and send it back.
+      address++; // Auto-advance to next EEPROM byte.
+    }
+#endif
+
+    // Return programmer identifier.
+    else if (val=='S') {
+      sendchar('A'); // Return 'AVRBOOT'.
+      sendchar('V'); // Software identifier (aka programmer signature) is always 7 characters.
+      sendchar('R');
+      sendchar('B');
+      sendchar('O');
+      sendchar('O');
+      sendchar('T');
+    }
+            
+    // Return signature bytes.
+    else if (val=='s') {
+      sendchar( SIGNATURE_BYTE_3 );
+      sendchar( SIGNATURE_BYTE_2 );
+      sendchar( SIGNATURE_BYTE_1 );
+    }       
+
+    // Return fuse & lock bytes
+    else if (val=='L') {
+      sendchar(boot_lock_fuse_bits_get(GET_LOW_FUSE_BITS));
+      sendchar(boot_lock_fuse_bits_get(GET_LOCK_BITS));
+      sendchar(boot_lock_fuse_bits_get(GET_EXTENDED_FUSE_BITS));
+      sendchar(boot_lock_fuse_bits_get(GET_HIGH_FUSE_BITS));
+    }       
+    
+    else if (val=='q') {
+      break; // start real code running
+    }
+
+    // The last command to accept is ESC (synchronization).
+    else if (val!=0x1b) {                  // If not ESC, then it is unrecognized...
+      sendchar('?');
+    }
+
+    val=recchar();
+  }
+
+  boot_spm_busy_wait();        
+  boot_rww_enable();
+  funcptr(); // Jump to Reset vector 0x0000 in Application Section.
+} // end: main
+
+
+#ifndef REMOVE_BLOCK_SUPPORT
+unsigned char BlockLoad(unsigned int size, unsigned char mem, long *address)
+{
+   1f922:	4f 92       	push	r4
+   1f924:	5f 92       	push	r5
+   1f926:	6f 92       	push	r6
+   1f928:	7f 92       	push	r7
+   1f92a:	8f 92       	push	r8
+   1f92c:	9f 92       	push	r9
+   1f92e:	af 92       	push	r10
+   1f930:	bf 92       	push	r11
+   1f932:	cf 92       	push	r12
+   1f934:	df 92       	push	r13
+   1f936:	ef 92       	push	r14
+   1f938:	ff 92       	push	r15
+   1f93a:	0f 93       	push	r16
+   1f93c:	1f 93       	push	r17
+   1f93e:	cf 93       	push	r28
+   1f940:	df 93       	push	r29
+   1f942:	cd b7       	in	r28, 0x3d	; 61
+   1f944:	de b7       	in	r29, 0x3e	; 62
+   1f946:	c0 58       	subi	r28, 0x80	; 128
+   1f948:	d0 40       	sbci	r29, 0x00	; 0
+   1f94a:	0f b6       	in	r0, 0x3f	; 63
+   1f94c:	f8 94       	cli
+   1f94e:	de bf       	out	0x3e, r29	; 62
+   1f950:	0f be       	out	0x3f, r0	; 63
+   1f952:	cd bf       	out	0x3d, r28	; 61
+   1f954:	5c 01       	movw	r10, r24
+   1f956:	6a 01       	movw	r12, r20
+  unsigned char buffer[BLOCKSIZE];
+  unsigned int data;
+  unsigned long tempaddress;
+
+	
+  // EEPROM memory type.
+  if(mem=='E')
+   1f958:	65 34       	cpi	r22, 0x45	; 69
+   1f95a:	09 f0       	breq	.+2      	; 0x1f95e <BlockLoad+0x3c>
+   1f95c:	5b c0       	rjmp	.+182    	; 0x1fa14 <BlockLoad+0xf2>
+    {
+      /* Fill buffer first, as EEPROM is too slow to copy with UART speed */
+      for(tempaddress=0;tempaddress<size;tempaddress++)
+   1f95e:	3c 01       	movw	r6, r24
+   1f960:	88 24       	eor	r8, r8
+   1f962:	99 24       	eor	r9, r9
+   1f964:	89 2b       	or	r24, r25
+   1f966:	b9 f0       	breq	.+46     	; 0x1f996 <BlockLoad+0x74>
+   1f968:	ee 24       	eor	r14, r14
+   1f96a:	ff 24       	eor	r15, r15
+   1f96c:	87 01       	movw	r16, r14
+   1f96e:	2e 01       	movw	r4, r28
+   1f970:	08 94       	sec
+   1f972:	41 1c       	adc	r4, r1
+   1f974:	51 1c       	adc	r5, r1
+        buffer[tempaddress] = recchar();
+   1f976:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1f97a:	f2 01       	movw	r30, r4
+   1f97c:	ee 0d       	add	r30, r14
+   1f97e:	ff 1d       	adc	r31, r15
+   1f980:	80 83       	st	Z, r24
+   1f982:	08 94       	sec
+   1f984:	e1 1c       	adc	r14, r1
+   1f986:	f1 1c       	adc	r15, r1
+   1f988:	01 1d       	adc	r16, r1
+   1f98a:	11 1d       	adc	r17, r1
+   1f98c:	6e 14       	cp	r6, r14
+   1f98e:	7f 04       	cpc	r7, r15
+   1f990:	80 06       	cpc	r8, r16
+   1f992:	91 06       	cpc	r9, r17
+   1f994:	81 f7       	brne	.-32     	; 0x1f976 <BlockLoad+0x54>
+        
+      /* Then program the EEPROM */
+      boot_spm_busy_wait();
+   1f996:	80 91 68 00 	lds	r24, 0x0068
+   1f99a:	80 fd       	sbrc	r24, 0
+   1f99c:	fc cf       	rjmp	.-8      	; 0x1f996 <BlockLoad+0x74>
+      for( tempaddress=0; tempaddress < size; tempaddress++)
+   1f99e:	ab 28       	or	r10, r11
+   1f9a0:	09 f4       	brne	.+2      	; 0x1f9a4 <BlockLoad+0x82>
+   1f9a2:	94 c0       	rjmp	.+296    	; 0x1facc <BlockLoad+0x1aa>
+   1f9a4:	20 e0       	ldi	r18, 0x00	; 0
+   1f9a6:	30 e0       	ldi	r19, 0x00	; 0
+   1f9a8:	40 e0       	ldi	r20, 0x00	; 0
+   1f9aa:	50 e0       	ldi	r21, 0x00	; 0
+   1f9ac:	be 01       	movw	r22, r28
+   1f9ae:	6f 5f       	subi	r22, 0xFF	; 255
+   1f9b0:	7f 4f       	sbci	r23, 0xFF	; 255
+    	{
+          EEARL = *address; // Setup EEPROM address
+   1f9b2:	f6 01       	movw	r30, r12
+   1f9b4:	80 81       	ld	r24, Z
+   1f9b6:	91 81       	ldd	r25, Z+1	; 0x01
+   1f9b8:	a2 81       	ldd	r26, Z+2	; 0x02
+   1f9ba:	b3 81       	ldd	r27, Z+3	; 0x03
+   1f9bc:	8e bb       	out	0x1e, r24	; 30
+          EEARH = ((*address) >> 8);
+   1f9be:	80 81       	ld	r24, Z
+   1f9c0:	91 81       	ldd	r25, Z+1	; 0x01
+   1f9c2:	a2 81       	ldd	r26, Z+2	; 0x02
+   1f9c4:	b3 81       	ldd	r27, Z+3	; 0x03
+   1f9c6:	89 2f       	mov	r24, r25
+   1f9c8:	9a 2f       	mov	r25, r26
+   1f9ca:	ab 2f       	mov	r26, r27
+   1f9cc:	bb 27       	eor	r27, r27
+   1f9ce:	a7 fd       	sbrc	r26, 7
+   1f9d0:	ba 95       	dec	r27
+   1f9d2:	8f bb       	out	0x1f, r24	; 31
+          EEDR = buffer[tempaddress]; // Get byte.
+   1f9d4:	fb 01       	movw	r30, r22
+   1f9d6:	e2 0f       	add	r30, r18
+   1f9d8:	f3 1f       	adc	r31, r19
+   1f9da:	80 81       	ld	r24, Z
+   1f9dc:	8d bb       	out	0x1d, r24	; 29
+          EECR |= (1<<EEMWE); // Write byte.
+   1f9de:	e2 9a       	sbi	0x1c, 2	; 28
+          EECR |= (1<<EEWE);
+   1f9e0:	e1 9a       	sbi	0x1c, 1	; 28
+          while (EECR & (1<<EEWE)) // Wait for write operation to finish.
+   1f9e2:	e1 99       	sbic	0x1c, 1	; 28
+   1f9e4:	fe cf       	rjmp	.-4      	; 0x1f9e2 <BlockLoad+0xc0>
+            ;
+
+          (*address)++; // Select next EEPROM byte
+   1f9e6:	f6 01       	movw	r30, r12
+   1f9e8:	80 81       	ld	r24, Z
+   1f9ea:	91 81       	ldd	r25, Z+1	; 0x01
+   1f9ec:	a2 81       	ldd	r26, Z+2	; 0x02
+   1f9ee:	b3 81       	ldd	r27, Z+3	; 0x03
+   1f9f0:	01 96       	adiw	r24, 0x01	; 1
+   1f9f2:	a1 1d       	adc	r26, r1
+   1f9f4:	b1 1d       	adc	r27, r1
+   1f9f6:	80 83       	st	Z, r24
+   1f9f8:	91 83       	std	Z+1, r25	; 0x01
+   1f9fa:	a2 83       	std	Z+2, r26	; 0x02
+   1f9fc:	b3 83       	std	Z+3, r27	; 0x03
+   1f9fe:	2f 5f       	subi	r18, 0xFF	; 255
+   1fa00:	3f 4f       	sbci	r19, 0xFF	; 255
+   1fa02:	4f 4f       	sbci	r20, 0xFF	; 255
+   1fa04:	5f 4f       	sbci	r21, 0xFF	; 255
+   1fa06:	62 16       	cp	r6, r18
+   1fa08:	73 06       	cpc	r7, r19
+   1fa0a:	84 06       	cpc	r8, r20
+   1fa0c:	95 06       	cpc	r9, r21
+   1fa0e:	09 f4       	brne	.+2      	; 0x1fa12 <BlockLoad+0xf0>
+   1fa10:	5d c0       	rjmp	.+186    	; 0x1facc <BlockLoad+0x1aa>
+   1fa12:	cf cf       	rjmp	.-98     	; 0x1f9b2 <BlockLoad+0x90>
+        }
+
+      return '\r'; // Report programming OK
+    } 
+    
+  // Flash memory type.
+  else if(mem=='F')
+   1fa14:	66 34       	cpi	r22, 0x46	; 70
+   1fa16:	09 f0       	breq	.+2      	; 0x1fa1a <BlockLoad+0xf8>
+   1fa18:	5c c0       	rjmp	.+184    	; 0x1fad2 <BlockLoad+0x1b0>
+    { // NOTE: For flash programming, 'address' is given in words.
+
+      if (*address >= APP_END) {
+   1fa1a:	fa 01       	movw	r30, r20
+   1fa1c:	80 81       	ld	r24, Z
+   1fa1e:	91 81       	ldd	r25, Z+1	; 0x01
+   1fa20:	a2 81       	ldd	r26, Z+2	; 0x02
+   1fa22:	b3 81       	ldd	r27, Z+3	; 0x03
+   1fa24:	80 30       	cpi	r24, 0x00	; 0
+   1fa26:	f8 ef       	ldi	r31, 0xF8	; 248
+   1fa28:	9f 07       	cpc	r25, r31
+   1fa2a:	f1 e0       	ldi	r31, 0x01	; 1
+   1fa2c:	af 07       	cpc	r26, r31
+   1fa2e:	f0 e0       	ldi	r31, 0x00	; 0
+   1fa30:	bf 07       	cpc	r27, r31
+   1fa32:	0c f0       	brlt	.+2      	; 0x1fa36 <BlockLoad+0x114>
+   1fa34:	4e c0       	rjmp	.+156    	; 0x1fad2 <BlockLoad+0x1b0>
+        return '?';
+      }
+
+      (*address) <<= 1; // Convert address to bytes temporarily.
+   1fa36:	88 0f       	add	r24, r24
+   1fa38:	99 1f       	adc	r25, r25
+   1fa3a:	aa 1f       	adc	r26, r26
+   1fa3c:	bb 1f       	adc	r27, r27
+   1fa3e:	fa 01       	movw	r30, r20
+   1fa40:	80 83       	st	Z, r24
+   1fa42:	91 83       	std	Z+1, r25	; 0x01
+   1fa44:	a2 83       	std	Z+2, r26	; 0x02
+   1fa46:	b3 83       	std	Z+3, r27	; 0x03
+      tempaddress = (*address);  // Store address in page.
+   1fa48:	3c 01       	movw	r6, r24
+   1fa4a:	4d 01       	movw	r8, r26
+   1fa4c:	11 e0       	ldi	r17, 0x01	; 1
+	
+      do {
+        data = recword();
+   1fa4e:	0e 94 75 fc 	call	0x1f8ea	; 0x1f8ea <recword>
+        boot_page_fill(*address, data);
+   1fa52:	f6 01       	movw	r30, r12
+   1fa54:	20 81       	ld	r18, Z
+   1fa56:	31 81       	ldd	r19, Z+1	; 0x01
+   1fa58:	42 81       	ldd	r20, Z+2	; 0x02
+   1fa5a:	53 81       	ldd	r21, Z+3	; 0x03
+   1fa5c:	0c 01       	movw	r0, r24
+   1fa5e:	f9 01       	movw	r30, r18
+   1fa60:	40 93 5b 00 	sts	0x005B, r20
+   1fa64:	10 93 68 00 	sts	0x0068, r17
+   1fa68:	e8 95       	spm
+   1fa6a:	11 24       	eor	r1, r1
+        (*address)+=2; // Select next word in memory.
+   1fa6c:	2e 5f       	subi	r18, 0xFE	; 254
+   1fa6e:	3f 4f       	sbci	r19, 0xFF	; 255
+   1fa70:	4f 4f       	sbci	r20, 0xFF	; 255
+   1fa72:	5f 4f       	sbci	r21, 0xFF	; 255
+   1fa74:	f6 01       	movw	r30, r12
+   1fa76:	20 83       	st	Z, r18
+   1fa78:	31 83       	std	Z+1, r19	; 0x01
+   1fa7a:	42 83       	std	Z+2, r20	; 0x02
+   1fa7c:	53 83       	std	Z+3, r21	; 0x03
+        size -= 2; // Reduce number of bytes to write by two.
+   1fa7e:	8e ef       	ldi	r24, 0xFE	; 254
+   1fa80:	9f ef       	ldi	r25, 0xFF	; 255
+   1fa82:	a8 0e       	add	r10, r24
+   1fa84:	b9 1e       	adc	r11, r25
+      } while(size); // Loop until all bytes written.
+   1fa86:	a1 14       	cp	r10, r1
+   1fa88:	b1 04       	cpc	r11, r1
+   1fa8a:	09 f7       	brne	.-62     	; 0x1fa4e <BlockLoad+0x12c>
+      
+      boot_page_write(tempaddress);
+   1fa8c:	85 e0       	ldi	r24, 0x05	; 5
+   1fa8e:	f3 01       	movw	r30, r6
+   1fa90:	80 92 5b 00 	sts	0x005B, r8
+   1fa94:	80 93 68 00 	sts	0x0068, r24
+   1fa98:	e8 95       	spm
+   1fa9a:	e8 e6       	ldi	r30, 0x68	; 104
+   1fa9c:	f0 e0       	ldi	r31, 0x00	; 0
+      boot_spm_busy_wait();
+   1fa9e:	80 81       	ld	r24, Z
+   1faa0:	80 fd       	sbrc	r24, 0
+   1faa2:	fd cf       	rjmp	.-6      	; 0x1fa9e <BlockLoad+0x17c>
+      boot_rww_enable();
+   1faa4:	81 e1       	ldi	r24, 0x11	; 17
+   1faa6:	80 93 68 00 	sts	0x0068, r24
+   1faaa:	e8 95       	spm
+
+      (*address) >>= 1; // Convert address back to Flash words again.
+   1faac:	f6 01       	movw	r30, r12
+   1faae:	80 81       	ld	r24, Z
+   1fab0:	91 81       	ldd	r25, Z+1	; 0x01
+   1fab2:	a2 81       	ldd	r26, Z+2	; 0x02
+   1fab4:	b3 81       	ldd	r27, Z+3	; 0x03
+   1fab6:	b5 95       	asr	r27
+   1fab8:	a7 95       	ror	r26
+   1faba:	97 95       	ror	r25
+   1fabc:	87 95       	ror	r24
+   1fabe:	80 83       	st	Z, r24
+   1fac0:	91 83       	std	Z+1, r25	; 0x01
+   1fac2:	a2 83       	std	Z+2, r26	; 0x02
+   1fac4:	b3 83       	std	Z+3, r27	; 0x03
+   1fac6:	8d e0       	ldi	r24, 0x0D	; 13
+   1fac8:	90 e0       	ldi	r25, 0x00	; 0
+   1faca:	05 c0       	rjmp	.+10     	; 0x1fad6 <BlockLoad+0x1b4>
+      return '\r'; // Report programming OK
+   1facc:	8d e0       	ldi	r24, 0x0D	; 13
+   1face:	90 e0       	ldi	r25, 0x00	; 0
+   1fad0:	02 c0       	rjmp	.+4      	; 0x1fad6 <BlockLoad+0x1b4>
+   1fad2:	8f e3       	ldi	r24, 0x3F	; 63
+   1fad4:	90 e0       	ldi	r25, 0x00	; 0
+   1fad6:	c0 58       	subi	r28, 0x80	; 128
+   1fad8:	df 4f       	sbci	r29, 0xFF	; 255
+   1fada:	0f b6       	in	r0, 0x3f	; 63
+   1fadc:	f8 94       	cli
+   1fade:	de bf       	out	0x3e, r29	; 62
+   1fae0:	0f be       	out	0x3f, r0	; 63
+   1fae2:	cd bf       	out	0x3d, r28	; 61
+   1fae4:	df 91       	pop	r29
+   1fae6:	cf 91       	pop	r28
+   1fae8:	1f 91       	pop	r17
+   1faea:	0f 91       	pop	r16
+   1faec:	ff 90       	pop	r15
+   1faee:	ef 90       	pop	r14
+   1faf0:	df 90       	pop	r13
+   1faf2:	cf 90       	pop	r12
+   1faf4:	bf 90       	pop	r11
+   1faf6:	af 90       	pop	r10
+   1faf8:	9f 90       	pop	r9
+   1fafa:	8f 90       	pop	r8
+   1fafc:	7f 90       	pop	r7
+   1fafe:	6f 90       	pop	r6
+   1fb00:	5f 90       	pop	r5
+   1fb02:	4f 90       	pop	r4
+   1fb04:	08 95       	ret
+
+0001fb06 <BlockRead>:
+    }
+    
+  // Invalid memory type?
+  else
+    {
+      return '?';
+    }
+}
+
+
+void BlockRead(unsigned int size, unsigned char mem, long *address)
+{
+   1fb06:	0f 93       	push	r16
+   1fb08:	1f 93       	push	r17
+   1fb0a:	cf 93       	push	r28
+   1fb0c:	df 93       	push	r29
+   1fb0e:	8c 01       	movw	r16, r24
+   1fb10:	ea 01       	movw	r28, r20
+  // EEPROM memory type.
+  if (mem=='E') // Read EEPROM
+   1fb12:	65 34       	cpi	r22, 0x45	; 69
+   1fb14:	19 f5       	brne	.+70     	; 0x1fb5c <BlockRead+0x56>
+    {
+      do
+        {
+          EEARL = *address; // Setup EEPROM address
+   1fb16:	88 81       	ld	r24, Y
+   1fb18:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb1a:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb1c:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb1e:	8e bb       	out	0x1e, r24	; 30
+          EEARH = ((*address) >> 8);
+   1fb20:	88 81       	ld	r24, Y
+   1fb22:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb24:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb26:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb28:	89 2f       	mov	r24, r25
+   1fb2a:	9a 2f       	mov	r25, r26
+   1fb2c:	ab 2f       	mov	r26, r27
+   1fb2e:	bb 27       	eor	r27, r27
+   1fb30:	a7 fd       	sbrc	r26, 7
+   1fb32:	ba 95       	dec	r27
+   1fb34:	8f bb       	out	0x1f, r24	; 31
+          (*address)++; // Select next EEPROM byte
+   1fb36:	88 81       	ld	r24, Y
+   1fb38:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb3a:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb3c:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb3e:	01 96       	adiw	r24, 0x01	; 1
+   1fb40:	a1 1d       	adc	r26, r1
+   1fb42:	b1 1d       	adc	r27, r1
+   1fb44:	88 83       	st	Y, r24
+   1fb46:	99 83       	std	Y+1, r25	; 0x01
+   1fb48:	aa 83       	std	Y+2, r26	; 0x02
+   1fb4a:	bb 83       	std	Y+3, r27	; 0x03
+          EECR |= (1<<EERE); // Read EEPROM
+   1fb4c:	e0 9a       	sbi	0x1c, 0	; 28
+          sendchar(EEDR); // Transmit EEPROM dat ato PC
+   1fb4e:	8d b3       	in	r24, 0x1d	; 29
+   1fb50:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+
+          size--; // Decrease number of bytes to read
+   1fb54:	01 50       	subi	r16, 0x01	; 1
+   1fb56:	10 40       	sbci	r17, 0x00	; 0
+        } while (size); // Repeat until all block has been read
+   1fb58:	b1 f1       	breq	.+108    	; 0x1fbc6 <BlockRead+0xc0>
+   1fb5a:	dd cf       	rjmp	.-70     	; 0x1fb16 <BlockRead+0x10>
+    }
+    
+  // Flash memory type.
+  else if(mem=='F')
+   1fb5c:	66 34       	cpi	r22, 0x46	; 70
+   1fb5e:	99 f5       	brne	.+102    	; 0x1fbc6 <BlockRead+0xc0>
+    {
+      (*address) <<= 1; // Convert address to bytes temporarily.
+   1fb60:	88 81       	ld	r24, Y
+   1fb62:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb64:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb66:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb68:	88 0f       	add	r24, r24
+   1fb6a:	99 1f       	adc	r25, r25
+   1fb6c:	aa 1f       	adc	r26, r26
+   1fb6e:	bb 1f       	adc	r27, r27
+   1fb70:	88 83       	st	Y, r24
+   1fb72:	99 83       	std	Y+1, r25	; 0x01
+   1fb74:	aa 83       	std	Y+2, r26	; 0x02
+   1fb76:	bb 83       	std	Y+3, r27	; 0x03
+	
+      do
+        {
+          sendchar( __LPM(*address) );
+   1fb78:	88 81       	ld	r24, Y
+   1fb7a:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb7c:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb7e:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb80:	fc 01       	movw	r30, r24
+   1fb82:	84 91       	lpm	r24, Z
+   1fb84:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+          sendchar( __LPM((*address)+1) );
+   1fb88:	88 81       	ld	r24, Y
+   1fb8a:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb8c:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fb8e:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fb90:	fc 01       	movw	r30, r24
+   1fb92:	31 96       	adiw	r30, 0x01	; 1
+   1fb94:	84 91       	lpm	r24, Z
+   1fb96:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+          (*address) += 2; // Select next word in memory.
+   1fb9a:	88 81       	ld	r24, Y
+   1fb9c:	99 81       	ldd	r25, Y+1	; 0x01
+   1fb9e:	aa 81       	ldd	r26, Y+2	; 0x02
+   1fba0:	bb 81       	ldd	r27, Y+3	; 0x03
+   1fba2:	02 96       	adiw	r24, 0x02	; 2
+   1fba4:	a1 1d       	adc	r26, r1
+   1fba6:	b1 1d       	adc	r27, r1
+   1fba8:	88 83       	st	Y, r24
+   1fbaa:	99 83       	std	Y+1, r25	; 0x01
+   1fbac:	aa 83       	std	Y+2, r26	; 0x02
+   1fbae:	bb 83       	std	Y+3, r27	; 0x03
+          size -= 2; // Subtract two bytes from number of bytes to read
+   1fbb0:	02 50       	subi	r16, 0x02	; 2
+   1fbb2:	10 40       	sbci	r17, 0x00	; 0
+        } while (size); // Repeat until all block has been read
+   1fbb4:	09 f7       	brne	.-62     	; 0x1fb78 <BlockRead+0x72>
+
+      (*address) >>= 1; // Convert address back to Flash words again.
+   1fbb6:	b5 95       	asr	r27
+   1fbb8:	a7 95       	ror	r26
+   1fbba:	97 95       	ror	r25
+   1fbbc:	87 95       	ror	r24
+   1fbbe:	88 83       	st	Y, r24
+   1fbc0:	99 83       	std	Y+1, r25	; 0x01
+   1fbc2:	aa 83       	std	Y+2, r26	; 0x02
+   1fbc4:	bb 83       	std	Y+3, r27	; 0x03
+   1fbc6:	df 91       	pop	r29
+   1fbc8:	cf 91       	pop	r28
+   1fbca:	1f 91       	pop	r17
+   1fbcc:	0f 91       	pop	r16
+   1fbce:	08 95       	ret
+
+0001fbd0 <main>:
+   1fbd0:	bf 92       	push	r11
+   1fbd2:	cf 92       	push	r12
+   1fbd4:	df 92       	push	r13
+   1fbd6:	ef 92       	push	r14
+   1fbd8:	ff 92       	push	r15
+   1fbda:	0f 93       	push	r16
+   1fbdc:	1f 93       	push	r17
+   1fbde:	cf 93       	push	r28
+   1fbe0:	df 93       	push	r29
+   1fbe2:	cd b7       	in	r28, 0x3d	; 61
+   1fbe4:	de b7       	in	r29, 0x3e	; 62
+   1fbe6:	24 97       	sbiw	r28, 0x04	; 4
+   1fbe8:	0f b6       	in	r0, 0x3f	; 63
+   1fbea:	f8 94       	cli
+   1fbec:	de bf       	out	0x3e, r29	; 62
+   1fbee:	0f be       	out	0x3f, r0	; 63
+   1fbf0:	cd bf       	out	0x3d, r28	; 61
+   1fbf2:	f8 94       	cli
+   1fbf4:	0e 94 65 fc 	call	0x1f8ca	; 0x1f8ca <initbootuart>
+   1fbf8:	cc 24       	eor	r12, r12
+   1fbfa:	dd 24       	eor	r13, r13
+   1fbfc:	76 01       	movw	r14, r12
+   1fbfe:	00 e0       	ldi	r16, 0x00	; 0
+   1fc00:	bb 24       	eor	r11, r11
+   1fc02:	5f 9b       	sbis	0x0b, 7	; 11
+   1fc04:	20 c0       	rjmp	.+64     	; 0x1fc46 <main+0x76>
+   1fc06:	8c b1       	in	r24, 0x0c	; 12
+   1fc08:	b3 94       	inc	r11
+   1fc0a:	9f e0       	ldi	r25, 0x0F	; 15
+   1fc0c:	9b 15       	cp	r25, r11
+   1fc0e:	08 f4       	brcc	.+2      	; 0x1fc12 <main+0x42>
+   1fc10:	ff cf       	rjmp	.-2      	; 0x1fc10 <main+0x40>
+   1fc12:	03 30       	cpi	r16, 0x03	; 3
+   1fc14:	18 f4       	brcc	.+6      	; 0x1fc1c <main+0x4c>
+   1fc16:	01 30       	cpi	r16, 0x01	; 1
+   1fc18:	50 f4       	brcc	.+20     	; 0x1fc2e <main+0x5e>
+   1fc1a:	05 c0       	rjmp	.+10     	; 0x1fc26 <main+0x56>
+   1fc1c:	03 30       	cpi	r16, 0x03	; 3
+   1fc1e:	59 f0       	breq	.+22     	; 0x1fc36 <main+0x66>
+   1fc20:	04 30       	cpi	r16, 0x04	; 4
+   1fc22:	89 f4       	brne	.+34     	; 0x1fc46 <main+0x76>
+   1fc24:	0c c0       	rjmp	.+24     	; 0x1fc3e <main+0x6e>
+   1fc26:	84 35       	cpi	r24, 0x54	; 84
+   1fc28:	71 f4       	brne	.+28     	; 0x1fc46 <main+0x76>
+   1fc2a:	01 e0       	ldi	r16, 0x01	; 1
+   1fc2c:	0c c0       	rjmp	.+24     	; 0x1fc46 <main+0x76>
+   1fc2e:	8f 36       	cpi	r24, 0x6F	; 111
+   1fc30:	49 f4       	brne	.+18     	; 0x1fc44 <main+0x74>
+   1fc32:	0f 5f       	subi	r16, 0xFF	; 255
+   1fc34:	08 c0       	rjmp	.+16     	; 0x1fc46 <main+0x76>
+   1fc36:	82 36       	cpi	r24, 0x62	; 98
+   1fc38:	29 f4       	brne	.+10     	; 0x1fc44 <main+0x74>
+   1fc3a:	04 e0       	ldi	r16, 0x04	; 4
+   1fc3c:	04 c0       	rjmp	.+8      	; 0x1fc46 <main+0x76>
+   1fc3e:	81 32       	cpi	r24, 0x21	; 33
+   1fc40:	09 f4       	brne	.+2      	; 0x1fc44 <main+0x74>
+   1fc42:	4b c0       	rjmp	.+150    	; 0x1fcda <main+0x10a>
+   1fc44:	00 e0       	ldi	r16, 0x00	; 0
+   1fc46:	08 94       	sec
+   1fc48:	c1 1c       	adc	r12, r1
+   1fc4a:	d1 1c       	adc	r13, r1
+   1fc4c:	e1 1c       	adc	r14, r1
+   1fc4e:	f1 1c       	adc	r15, r1
+   1fc50:	80 e0       	ldi	r24, 0x00	; 0
+   1fc52:	c8 16       	cp	r12, r24
+   1fc54:	80 e2       	ldi	r24, 0x20	; 32
+   1fc56:	d8 06       	cpc	r13, r24
+   1fc58:	80 e0       	ldi	r24, 0x00	; 0
+   1fc5a:	e8 06       	cpc	r14, r24
+   1fc5c:	80 e0       	ldi	r24, 0x00	; 0
+   1fc5e:	f8 06       	cpc	r15, r24
+   1fc60:	41 f5       	brne	.+80     	; 0x1fcb2 <main+0xe2>
+   1fc62:	14 b7       	in	r17, 0x34	; 52
+   1fc64:	87 e5       	ldi	r24, 0x57	; 87
+   1fc66:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc6a:	8d e3       	ldi	r24, 0x3D	; 61
+   1fc6c:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc70:	81 2f       	mov	r24, r17
+   1fc72:	82 95       	swap	r24
+   1fc74:	8f 70       	andi	r24, 0x0F	; 15
+   1fc76:	0e 94 85 fc 	call	0x1f90a	; 0x1f90a <hex>
+   1fc7a:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc7e:	81 2f       	mov	r24, r17
+   1fc80:	8f 70       	andi	r24, 0x0F	; 15
+   1fc82:	0e 94 85 fc 	call	0x1f90a	; 0x1f90a <hex>
+   1fc86:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc8a:	80 e2       	ldi	r24, 0x20	; 32
+   1fc8c:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc90:	14 be       	out	0x34, r1	; 52
+   1fc92:	82 e4       	ldi	r24, 0x42	; 66
+   1fc94:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc98:	8f e6       	ldi	r24, 0x6F	; 111
+   1fc9a:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fc9e:	8f e6       	ldi	r24, 0x6F	; 111
+   1fca0:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fca4:	84 e7       	ldi	r24, 0x74	; 116
+   1fca6:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fcaa:	8f e3       	ldi	r24, 0x3F	; 63
+   1fcac:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fcb0:	a8 cf       	rjmp	.-176    	; 0x1fc02 <main+0x32>
+   1fcb2:	90 e0       	ldi	r25, 0x00	; 0
+   1fcb4:	c9 16       	cp	r12, r25
+   1fcb6:	90 e0       	ldi	r25, 0x00	; 0
+   1fcb8:	d9 06       	cpc	r13, r25
+   1fcba:	94 e0       	ldi	r25, 0x04	; 4
+   1fcbc:	e9 06       	cpc	r14, r25
+   1fcbe:	90 e0       	ldi	r25, 0x00	; 0
+   1fcc0:	f9 06       	cpc	r15, r25
+   1fcc2:	09 f0       	breq	.+2      	; 0x1fcc6 <main+0xf6>
+   1fcc4:	9e cf       	rjmp	.-196    	; 0x1fc02 <main+0x32>
+   1fcc6:	8d e0       	ldi	r24, 0x0D	; 13
+   1fcc8:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fccc:	8a e0       	ldi	r24, 0x0A	; 10
+   1fcce:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fcd2:	e0 e0       	ldi	r30, 0x00	; 0
+   1fcd4:	f0 e0       	ldi	r31, 0x00	; 0
+   1fcd6:	09 95       	icall
+   1fcd8:	94 cf       	rjmp	.-216    	; 0x1fc02 <main+0x32>
+   1fcda:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1fcde:	6e 01       	movw	r12, r28
+   1fce0:	08 94       	sec
+   1fce2:	c1 1c       	adc	r12, r1
+   1fce4:	d1 1c       	adc	r13, r1
+   1fce6:	0f 2e       	mov	r0, r31
+   1fce8:	f9 e0       	ldi	r31, 0x09	; 9
+   1fcea:	ff 2e       	mov	r15, r31
+   1fcec:	f0 2d       	mov	r31, r0
+   1fcee:	81 34       	cpi	r24, 0x41	; 65
+   1fcf0:	61 f4       	brne	.+24     	; 0x1fd0a <main+0x13a>
+   1fcf2:	0e 94 75 fc 	call	0x1f8ea	; 0x1f8ea <recword>
+   1fcf6:	aa 27       	eor	r26, r26
+   1fcf8:	bb 27       	eor	r27, r27
+   1fcfa:	89 83       	std	Y+1, r24	; 0x01
+   1fcfc:	9a 83       	std	Y+2, r25	; 0x02
+   1fcfe:	ab 83       	std	Y+3, r26	; 0x03
+   1fd00:	bc 83       	std	Y+4, r27	; 0x04
+   1fd02:	8d e0       	ldi	r24, 0x0D	; 13
+   1fd04:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd08:	98 c0       	rjmp	.+304    	; 0x1fe3a <main+0x26a>
+   1fd0a:	85 36       	cpi	r24, 0x65	; 101
+   1fd0c:	21 f5       	brne	.+72     	; 0x1fd56 <main+0x186>
+   1fd0e:	20 e0       	ldi	r18, 0x00	; 0
+   1fd10:	30 e0       	ldi	r19, 0x00	; 0
+   1fd12:	40 e0       	ldi	r20, 0x00	; 0
+   1fd14:	50 e0       	ldi	r21, 0x00	; 0
+   1fd16:	a8 e6       	ldi	r26, 0x68	; 104
+   1fd18:	b0 e0       	ldi	r27, 0x00	; 0
+   1fd1a:	93 e0       	ldi	r25, 0x03	; 3
+   1fd1c:	8c 91       	ld	r24, X
+   1fd1e:	80 fd       	sbrc	r24, 0
+   1fd20:	fd cf       	rjmp	.-6      	; 0x1fd1c <main+0x14c>
+   1fd22:	f9 01       	movw	r30, r18
+   1fd24:	40 93 5b 00 	sts	0x005B, r20
+   1fd28:	90 93 68 00 	sts	0x0068, r25
+   1fd2c:	e8 95       	spm
+   1fd2e:	20 58       	subi	r18, 0x80	; 128
+   1fd30:	3f 4f       	sbci	r19, 0xFF	; 255
+   1fd32:	4f 4f       	sbci	r20, 0xFF	; 255
+   1fd34:	5f 4f       	sbci	r21, 0xFF	; 255
+   1fd36:	20 30       	cpi	r18, 0x00	; 0
+   1fd38:	88 ef       	ldi	r24, 0xF8	; 248
+   1fd3a:	38 07       	cpc	r19, r24
+   1fd3c:	81 e0       	ldi	r24, 0x01	; 1
+   1fd3e:	48 07       	cpc	r20, r24
+   1fd40:	80 e0       	ldi	r24, 0x00	; 0
+   1fd42:	58 07       	cpc	r21, r24
+   1fd44:	5c f3       	brlt	.-42     	; 0x1fd1c <main+0x14c>
+   1fd46:	29 83       	std	Y+1, r18	; 0x01
+   1fd48:	3a 83       	std	Y+2, r19	; 0x02
+   1fd4a:	4b 83       	std	Y+3, r20	; 0x03
+   1fd4c:	5c 83       	std	Y+4, r21	; 0x04
+   1fd4e:	8d e0       	ldi	r24, 0x0D	; 13
+   1fd50:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd54:	72 c0       	rjmp	.+228    	; 0x1fe3a <main+0x26a>
+   1fd56:	82 36       	cpi	r24, 0x62	; 98
+   1fd58:	51 f4       	brne	.+20     	; 0x1fd6e <main+0x19e>
+   1fd5a:	89 e5       	ldi	r24, 0x59	; 89
+   1fd5c:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd60:	80 e0       	ldi	r24, 0x00	; 0
+   1fd62:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd66:	80 e8       	ldi	r24, 0x80	; 128
+   1fd68:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd6c:	66 c0       	rjmp	.+204    	; 0x1fe3a <main+0x26a>
+   1fd6e:	82 34       	cpi	r24, 0x42	; 66
+   1fd70:	69 f4       	brne	.+26     	; 0x1fd8c <main+0x1bc>
+   1fd72:	0e 94 75 fc 	call	0x1f8ea	; 0x1f8ea <recword>
+   1fd76:	8c 01       	movw	r16, r24
+   1fd78:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1fd7c:	a6 01       	movw	r20, r12
+   1fd7e:	68 2f       	mov	r22, r24
+   1fd80:	c8 01       	movw	r24, r16
+   1fd82:	0e 94 91 fc 	call	0x1f922	; 0x1f922 <BlockLoad>
+   1fd86:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fd8a:	57 c0       	rjmp	.+174    	; 0x1fe3a <main+0x26a>
+   1fd8c:	87 36       	cpi	r24, 0x67	; 103
+   1fd8e:	59 f4       	brne	.+22     	; 0x1fda6 <main+0x1d6>
+   1fd90:	0e 94 75 fc 	call	0x1f8ea	; 0x1f8ea <recword>
+   1fd94:	8c 01       	movw	r16, r24
+   1fd96:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1fd9a:	a6 01       	movw	r20, r12
+   1fd9c:	68 2f       	mov	r22, r24
+   1fd9e:	c8 01       	movw	r24, r16
+   1fda0:	0e 94 83 fd 	call	0x1fb06	; 0x1fb06 <BlockRead>
+   1fda4:	4a c0       	rjmp	.+148    	; 0x1fe3a <main+0x26a>
+   1fda6:	83 35       	cpi	r24, 0x53	; 83
+   1fda8:	b1 f4       	brne	.+44     	; 0x1fdd6 <main+0x206>
+   1fdaa:	81 e4       	ldi	r24, 0x41	; 65
+   1fdac:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdb0:	86 e5       	ldi	r24, 0x56	; 86
+   1fdb2:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdb6:	82 e5       	ldi	r24, 0x52	; 82
+   1fdb8:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdbc:	82 e4       	ldi	r24, 0x42	; 66
+   1fdbe:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdc2:	8f e4       	ldi	r24, 0x4F	; 79
+   1fdc4:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdc8:	8f e4       	ldi	r24, 0x4F	; 79
+   1fdca:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdce:	84 e5       	ldi	r24, 0x54	; 84
+   1fdd0:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdd4:	32 c0       	rjmp	.+100    	; 0x1fe3a <main+0x26a>
+   1fdd6:	83 37       	cpi	r24, 0x73	; 115
+   1fdd8:	51 f4       	brne	.+20     	; 0x1fdee <main+0x21e>
+   1fdda:	82 e0       	ldi	r24, 0x02	; 2
+   1fddc:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fde0:	85 e9       	ldi	r24, 0x95	; 149
+   1fde2:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fde6:	8e e1       	ldi	r24, 0x1E	; 30
+   1fde8:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fdec:	26 c0       	rjmp	.+76     	; 0x1fe3a <main+0x26a>
+   1fdee:	8c 34       	cpi	r24, 0x4C	; 76
+   1fdf0:	e9 f4       	brne	.+58     	; 0x1fe2c <main+0x25c>
+   1fdf2:	e0 e0       	ldi	r30, 0x00	; 0
+   1fdf4:	f0 e0       	ldi	r31, 0x00	; 0
+   1fdf6:	f0 92 68 00 	sts	0x0068, r15
+   1fdfa:	84 91       	lpm	r24, Z
+   1fdfc:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fe00:	e1 e0       	ldi	r30, 0x01	; 1
+   1fe02:	f0 e0       	ldi	r31, 0x00	; 0
+   1fe04:	f0 92 68 00 	sts	0x0068, r15
+   1fe08:	84 91       	lpm	r24, Z
+   1fe0a:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fe0e:	e2 e0       	ldi	r30, 0x02	; 2
+   1fe10:	f0 e0       	ldi	r31, 0x00	; 0
+   1fe12:	f0 92 68 00 	sts	0x0068, r15
+   1fe16:	84 91       	lpm	r24, Z
+   1fe18:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fe1c:	e3 e0       	ldi	r30, 0x03	; 3
+   1fe1e:	f0 e0       	ldi	r31, 0x00	; 0
+   1fe20:	f0 92 68 00 	sts	0x0068, r15
+   1fe24:	84 91       	lpm	r24, Z
+   1fe26:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fe2a:	07 c0       	rjmp	.+14     	; 0x1fe3a <main+0x26a>
+   1fe2c:	81 37       	cpi	r24, 0x71	; 113
+   1fe2e:	41 f0       	breq	.+16     	; 0x1fe40 <main+0x270>
+   1fe30:	8b 31       	cpi	r24, 0x1B	; 27
+   1fe32:	19 f0       	breq	.+6      	; 0x1fe3a <main+0x26a>
+   1fe34:	8f e3       	ldi	r24, 0x3F	; 63
+   1fe36:	0e 94 6a fc 	call	0x1f8d4	; 0x1f8d4 <sendchar>
+   1fe3a:	0e 94 6e fc 	call	0x1f8dc	; 0x1f8dc <recchar>
+   1fe3e:	57 cf       	rjmp	.-338    	; 0x1fcee <main+0x11e>
+   1fe40:	80 91 68 00 	lds	r24, 0x0068
+   1fe44:	80 fd       	sbrc	r24, 0
+   1fe46:	fc cf       	rjmp	.-8      	; 0x1fe40 <main+0x270>
+   1fe48:	81 e1       	ldi	r24, 0x11	; 17
+   1fe4a:	80 93 68 00 	sts	0x0068, r24
+   1fe4e:	e8 95       	spm
+   1fe50:	e0 e0       	ldi	r30, 0x00	; 0
+   1fe52:	f0 e0       	ldi	r31, 0x00	; 0
+   1fe54:	09 95       	icall
+   1fe56:	80 e0       	ldi	r24, 0x00	; 0
+   1fe58:	90 e0       	ldi	r25, 0x00	; 0
+   1fe5a:	24 96       	adiw	r28, 0x04	; 4
+   1fe5c:	0f b6       	in	r0, 0x3f	; 63
+   1fe5e:	f8 94       	cli
+   1fe60:	de bf       	out	0x3e, r29	; 62
+   1fe62:	0f be       	out	0x3f, r0	; 63
+   1fe64:	cd bf       	out	0x3d, r28	; 61
+   1fe66:	df 91       	pop	r29
+   1fe68:	cf 91       	pop	r28
+   1fe6a:	1f 91       	pop	r17
+   1fe6c:	0f 91       	pop	r16
+   1fe6e:	ff 90       	pop	r15
+   1fe70:	ef 90       	pop	r14
+   1fe72:	df 90       	pop	r13
+   1fe74:	cf 90       	pop	r12
+   1fe76:	bf 90       	pop	r11
+   1fe78:	08 95       	ret

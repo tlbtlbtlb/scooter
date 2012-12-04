@@ -1,0 +1,1 @@
+balconf.o: balconf.h

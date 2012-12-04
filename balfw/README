@@ -1,0 +1,108 @@
+
+
+This is onboard firmware to control self-balancing vehicles. It
+handles 2-wheeled balancing robots, 2-wheeled lateral scooters, and
+unicycles. It's written for an Atmel ATMega128 hooked up to:
+
+  1 to 3 gyroscopes, for pitch, roll, and yaw rate
+  A 2-axis accelerometer, to correct pitch and roll
+  1 or 2 H bridges, to drive the motors
+  up to 2 strain-gauge steering inputs
+  optional motor & battery current sensor inputs
+  optional footpad sensor inputs
+
+There's a writeup about how balancing vehicles/robots work at
+http://tlb.org/scooter.html. There's information about how to build
+the hardware that this software runs on at
+http://tlb.org/scooterbuild.html. Roughly, it runs a feedback loop
+between the tilt angle of the scooter (determined from a gyro and
+accelerometer) and the drive motor voltage which causes a vehicle to
+balance on its wheel(s).
+
+If you try building a platform and hooking this up, you're almost
+guaranteed to have the sign of something wrong. So you should really
+run it at first off a current-limiting power supply so it won't be
+able to punch a hole through your wall when it zooms off at full
+speed. If it runs away or doesn't balance, you probably have a gyro
+hooked up backwards, or one of the motors hooked up backwards.
+
+In the balctl directory is a Python application which talks to the
+running firmware over a serial port. I use a pair of Bluetooth serial
+port extenders from www.free2move.se so I can drive around and log
+data. It also lets you configure the various parameters to suit your
+hardware and/or personal taste.
+
+Major configuration items are in balconf.h, including whether there
+are 1 or 2 wheels, and whether it's drivable over the serial link.
+
+
+
+Assuming you've got the right development tools installed, it should
+compile by just running gmake. You'll need recent versions of avr-gcc
+and avr-libc. I'm using:
+
+  avr-binutils-2.16  (http://gcc.gnu.org/)
+  avr-gcc-3.4.4      (http://gcc.gnu.org/)
+  avr-libc-1.2.5     (http://savannah.nongnu.org/projects/avr-libc)
+  avrdude-4.4.0      (http://www.bsdhome.com/avrdude/)
+
+Once you compile it, hook up an STK500 to your serial port and create
+a symlink from /dev/stk500 to /dev/cuaa0 (or /dev/ttyS0 or whatever
+device corresponds to your serial port.) Then connect the 6-pin
+programming header on the STK500 to the 6-pin programming header on
+the microcontroller PCB and run:
+
+  $ gmake fuses               [ configure some overall MCU options ]
+  $ gmake bootloader.install  [ install the bootloader ]
+  $ gmake bootloader.verify   [ to give yourself a warm fuzzy feeling ]
+  $ gmake bal.installnoerase  [ install the balancing code ]
+
+To install new scooter code, you want to connect the serial port
+directly to the microcontroller board, symlink that serial port device
+to /dev/bootdownload and run:
+
+  $ gmake bal.bootdownload
+
+Then turn on the power to the scooter. Instead of starting, it'll
+accept a download. (But if you don't have the cables connected right
+it'll start balancing, so have it upright and hold onto it firmly when
+you turn it on.)
+
+Here's a technical explanation of bootloading:
+
+  I use two different ways to program the internal flash program
+  memory of an Atmel MCU. The first, built right into the hardware of
+  the MCU, is to use a special serial protocol while asserting the
+  RESET line. This protocol is implemented by the STK500 development
+  board. You connect the 6-pin header on the STK500 to the 6-pin
+  header "PROG" on the microcontroller board, connect the STK500 DB-9
+  connector to your PC's serial port, and run avrdude. This setup can
+  program all 128k of the flash memory, as well as setting 'fuse' bits
+  to configure low-level options like what sort of clock crystal to
+  use.
+
+  The second way is by using a bootloader program already in the
+  flash. The flash has two regions: the first 126k and the last 2k. A
+  special feature allows you to run code in the last 2k while writing
+  into the first 126k. So we use the STK500 system to install a
+  bootloader, a small piece of code which prints "Boot:" out the
+  serial port and waits 1/4 second for a reply. If it gets no reply,
+  it jumps to the main code (in the 126k region) which is where the
+  balancing code (scooter.c & friends) goes. If it gets the start of a
+  download protocol, it accepts a download of new balancing code.
+
+  The other side of the bootloader protocol is implemented in Python
+  by libatmel/bootdownload.py. It's vaguely compatible with the
+  protocol in the AVR109 app note, which other programmers support. It
+  listens on the serial port for "Boot:", then starts programming.
+
+  A lot of how the above works is configured by what Atmel calls
+  "fuses". They aren't really fuses, since you can set and reset them.
+  Whether to jump first to the top 2k of flash, how large the top
+  bootloader region is, and where to get the clock signal are all
+  configured by fuses, so nothing will work if you don't have them set
+  right. "gmake query" will dump the state of the fuses.
+
+
+
+Copyright (c) 2003-2005 Trevor Blackwell <tlb@tlb.org>

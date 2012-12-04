@@ -1,0 +1,71 @@
+
+Order numbers ending in -ND are from Digikey. Most of the parts should
+be available from other distributors as well.
+
+Qty Value                       Order number            Parts
+
+The resistors without a part number can be found in PHA2A-KIT-ND
+
+2   Res 240 ohm 0805                                    R11, R12
+2   Res 400 ohm 0805                                    R19, R20
+5   Res 4.7k 0805                                       R5, R25, R26, R27, R28
+16  Res 10k 0.1% 0805           P10KZCT-ND              R2, R3, R7, R8, R9, R10, R13, R14, R15
+                                                        R16, R17, R18, R21, R22, R23, R24, 
+2   Res array separate 10k      4816P-1-103-ND          R1, R4
+1   Res 20k 1% 0805                                     R30
+
+
+The capacitors without a part number can be found in either
+PCC16-KIT-ND (0805) or PCC13-KIT-ND (0402)
+
+2   Cap 18pF 25v 0402                                   CX1, CX2
+1   Cap 10nF 25v 0402                                   C22
+2   Cap 22nF 25v 0402                                   C8, C9
+1   Cap 47nF 25v 0402                                   C15
+15  Cap 0.1uF 25v 0805                                  C3, C10, C11, C12, C13, C14, C17, C23
+                                                        C24, C25, C26, C27, C28, C29, C30
+2   Cap 0.22uF 25v 0805                                 C1, C2
+20  Cap 1uF 6v 0402                                     CD1..CD20
+6   Cap 1.0uF 16v 0805                                  C4, C5, C6, C7, C19, C20
+1   Cap 10uF 6v 0805            PCC2225CT-ND            C16
+4   Cap 10uF 25v 1206           PCC2326CT-ND            C21, C31, C32, C33
+
+
+1   Inductor 10uH 2012          445-1059-1-ND           L1
+1   Xtal 14.7456 MHz HC49       300-6031-ND             Q1
+
+
+2   LED 0805                    L62401CT-ND             LED1, LED2
+1   74HC08D 14-SOIC             296-1191-1-ND           U4
+2   74HC4051D 16-SOIC           568-1454-1-ND           U6, U10
+1   ADXL311JE 8-CLCC            ADXL311JE-ND            U11
+1   MAX232ECWE 16-SOIC          MAX232ECWE-ND           U3
+1   ATMEGA128-A 64-TQFP         ATMEGA128-16AI-ND       U2
+1   OPA2340U 8-SOIC             OPA2340UA-ND            U5
+1   LM78M05CDT TO-252           LM78M05CDT-ND           U13
+
+Populate only one of the following to provide a yaw gyro:
+1   ADXRS150ABG BGA32           ADXRS150ABG             U15
+1   ADXRS150ABGEB DIP20         ADXRS150ABGEB           U16
+
+Populate the following only if you're using wheel encoders:
+2   LM629M-6 SO-24              LM629M-6-ND             U7, U8
+1   LTC1799S5 SOT-23            LTC1799CS5-ND           U9
+1   74HC573 SO-20               497-1876-1-ND           U17
+1   74HC04 SO-14                497-1752-1-ND           U18
+
+Populate the following if you're using strain gauge inputs:
+1   INA2128U 16-SOIC            INA2128UA-ND            U12
+1   TL750L010C 8-SOIC           296-8006-5-ND           U14
+
+
+To make the small headers, cut up WM6980-ND
+
+3   3-pin 0.100 rt header       A23867-ND               XPITCHGYRO, XROLLGYRO, XYAWGYRO
+1   3x2 pin 0.100 vert header                           PROG
+1   4x2 pin 0.100 vert header                           XFOOTPAD
+2   5x2 pin 0.100 vert header                           SERIAL, XENC
+1   10x2 pin 0.100 header       A26730-ND               XPWM
+2   4 pin 2.54mm term           277-1275-ND             XSG1, XSG2
+1   7 pin 2.54mm term           277-1278-ND             XDASH
+

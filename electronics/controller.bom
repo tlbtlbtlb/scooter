@@ -1,0 +1,71 @@
+
+
+Part numbers ending in -ND are from Digikey.
+
+If you don't have the resistors and capacitors in stock, you might buy
+the 0805 resistor kit PHA2A-KIT-ND and capacitor kit PCC16-KIT-ND
+
+You can probably populate only 1/4 of the 1812 1uF 100v ceramic caps.
+You could also populate only every second IRFP2907 to save a few
+bucks. Make sure you heat sink them quite well if you do this.
+
+You can also omit the LM61BIM temperature sensors if you don't want to
+monitor MOSFET temperature.
+
+
+Qty Value                Order number                   Parts
+----------------------------------------------------------------------
+
+
+1   Cap 0.01uF 25v 0805                                 C40
+1   Cap 0.1uF 25v 0805                                  C21
+11  Cap 10uF 25v 1206    PCC2326CT-ND                   C6, C9, C11, C16, C17, C18, C23, C31, C35, CD19, CD20
+
+23  Cap 1uF 100v 1812    PCC2248CT-ND                   C19, C20, C41, C42, C43, C44, C45, C46, C47, C48, 
+                                                        C49, C50, C51, C52, C53, C54, C55, C56, C57, C58, 
+                                                        C60, C61, C64
+
+2   Cap 0.022uF 100v     495-1230-ND                    C1, C8
+26  Cap 220uF 63V        Mouser 647-UPW1J221MPH6        C2, C3, C4, C5, C7, C10, C12, C13, C14, C15, C22, 
+                                                        C24, C25, C26, C27, C28, C29, C30, C32, C33, C34, 
+                                                        C36, C37, C38, C39, C59
+
+
+16  Res 5 ohm 0805       RL12S5.1FCT-ND                 RGAH1, RGAH2, RGAL1, RGAL2, RGBH1, RGBH2, RGBL1, 
+                                                        RGBL2, RGCH1, RGCH2, RGCL1, RGCL2, RGDH1, RGDH2, 
+                                                        RGDL1, RGDL2
+1   Res 50 ohm 0805                                     RGDL3
+1   Res 1k 0805                                         R8
+1   Res 2k 0805                                         R7
+1   Res 5k 0805                                         R16
+2   Res 10k 0805                                        R1, R6
+4   Res 33k 0805                                        R12, R13, R14, R15
+1   Res 190k 0805                                       R2
+
+1   Res 1 ohm 2W        WHC1R0FECT-ND                   R11
+3   Res 5 ohm 2W        WHC5R0FECT-ND                   R3, R5, R9
+
+1   Res array 10k       4816P-1-103-ND                  R4
+
+1   Varistor S05K300E2  495-1422-ND                     R10
+
+
+4   Diode BAS21 SOT-23  BAS21LT1OSCT-ND                 D8, D9, D10, D11
+
+1   TVS 1.5ke62         1.5KE62AOS-ND                   D1
+4   Diode 1N4004        1N4004/4GICT-ND                 D2, D3, D4, D5
+1   Diode MR854         MR854OS-ND                      D6
+1   Zener 50v DO-35     1N5262BDICT-ND                  D7
+
+
+5   IR21844S 14-SOIC    IR21844S-ND                     DRV1, DRV2, DRV3, DRV4, U$4
+4   LM61BIM SOT-23      LM61BIM3CT-ND                   UTA, UTB, UTC, UTD
+17  IRFP2907 TO-247AC   IRFP2907-ND                     QAH1, QAH2, QAL1, QAL2, QBH1, QBH2, QBL1, QBL2, 
+                                                        QCH1, QCH2, QCL1, QCL2, QDH1, QDH2, QDL1, QDL2, QDL3
+
+1   DFC10U48D15         179-1026-ND                     U$3
+3   L08P150D15          MT7190-ND                       U$1, U$2, U$5
+
+1   4 pos term block    ED1936-ND                       X1
+1   10x2 pin 0.100 hdr  A26730-ND                       SV1
+

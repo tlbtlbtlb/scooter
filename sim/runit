@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/tlb/scooter/sim
+./scootsim.py -s
